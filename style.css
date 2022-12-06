@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Barlow Semi Condensed", sans-serif;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  font-size: 13px;
+  background-color: hsl(210, 46%, 95%);
+  place-items: center;
+}
+
+.Container {
+  max-width: 1200px; /*Gav den en max-width av 1200px istället för att sätta width på 70% sen i media queryn ändra till 90%*/
+  /* width: 70%; */
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas:
+    "A A B C"
+    "D E E C";
+  padding: 20px; /*Gav container en padding på 20px så att när den är mobil anpassad så får den lite marginal längs sidorna*/
+}
+
+.Card {
+  border-radius: 10px;
+  padding: 2rem;
+  background-color: blue;
+}
+
+.Card__header {
+  display: flex;
+  color: hsl(0, 0%, 81%);
+}
+
+.Card__header img {
+  width: 35px;
+  height: 35px;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10000px;
+}
+.verify {
+  opacity: 0.5;
+}
+.name {
+  font-weight: 600;
+  font-size: 15px;
+}
+.Card__text {
+  color: white;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+.Card__textmini {
+  color: hsl(0, 0%, 81%);
+  opacity: 0.7;
+}
+
+.one {
+  grid-area: A;
+  background-color: hsl(263, 55%, 52%);
+  background-image: url(images/bg-pattern-quotation.svg);
+  background-repeat: no-repeat;
+  background-position: 80% 0;
+}
+.two {
+  background-color: hsl(217, 19%, 35%);
+  grid-area: B;
+}
+.three {
+  background-color: hsl(0, 0%, 100%);
+  grid-area: D;
+}
+.four {
+  background-color: hsl(219, 29%, 14%);
+  grid-area: E;
+}
+.five {
+  background-color: hsl(0, 0%, 100%);
+  grid-area: C;
+}
+
+.five .Card__header,
+.five .Card__text,
+.five .Card__textmini,
+.three .Card__header,
+.three .Card__text,
+.three .Card__textmini {
+  color: black;
+}
+
+@media only screen and (max-width: 1000px) {
+  .Container {
+    margin-top: 2rem;
+    /* width: 90%; */ /*behövs ej då vi gjorde en max-width: 1200px; */
+    /* display: grid; */ /*behövs ej då den finns i .Container redan. */
+    grid-gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      "A A B"
+      "D E E"
+      "C C C";
+  }
+  .five {
+    margin-bottom: 2rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .Container {
+    margin-top: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "A A"
+      "B B"
+      "D D"
+      "E E"
+      "C C";
+  }
+
+  .five {
+    margin-bottom: 2rem;
+  }
+}
